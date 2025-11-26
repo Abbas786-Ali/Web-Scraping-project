@@ -7,15 +7,15 @@ The goal of this notebook is to programmatically retrieve structured data (Top 2
 
 ## Libraries Used
 
--   **`requests`**:
+ **`requests`**:
   
    A fundamental HTTP library for Python, used to send HTTP requests to web servers and retrieve their responses.
 
--   **`BeautifulSoup` (from `bs4`)**:
+ **`BeautifulSoup` (from `bs4`)**:
 
 A powerful library for parsing HTML and XML documents. It creates a parse tree from page source code that can be used to extract data from HTML in a highly flexible way.
 
--   **`pandas`**:
+ **`pandas`**:
 
  A fast, powerful, flexible, and easy-to-use open-source data analysis and manipulation tool, built on top of the Python programming language. It is used here to organize the scraped data into a DataFrame and export it.
 
@@ -28,19 +28,19 @@ The notebook executes the following steps:
 2.  **Define URL and headers**: Specifies the target URL (`https://www.imdb.com/chart/top/`) and sets `User-Agent` headers to simulate a web browser, which helps in avoiding bot detection by the server.
    
 
-4.  **Fetch HTML content**:
+3.  **Fetch HTML content**:
 
 Uses `requests.get()` to fetch the HTML content of the IMDb page. The content is then parsed by `BeautifulSoup` into a navigable tree structure.
    
-6.  **Identify movie elements**:
+4.  **Identify movie elements**:
 
      Locates all `<li>` HTML elements with the class `ipc-metadata-list-summary-item`, which correspond to individual movie entries on the Top 250 list.
     
-7.  **Initialize data storage**:
+5.  **Initialize data storage**:
    
     Creates an empty dictionary (`movie_data`) with keys for 'Title', 'Year', 'Rating', and 'Rank' to store the extracted data.
    
-8.  **Extract movie details**: Iterates through the first 20 identified movie elements:
+6.  **Extract movie details**: Iterates through the first 20 identified movie elements:
    
     *   Extracts the movie title by parsing the text of the `h3` tag and cleaning up the ranking number.
       
@@ -52,11 +52,11 @@ Uses `requests.get()` to fetch the HTML content of the IMDb page. The content is
       
     *   Appends the extracted information to the respective lists in the `movie_data` dictionary.
     
-9.  **Create and display DataFrame**:
+7.  **Create and display DataFrame**:
 
     Converts the `movie_data` dictionary into a pandas DataFrame.
     
-10.  **Save to CSV**:
+8.  **Save to CSV**:
 
       Exports the DataFrame to a CSV file named `scraped_movies.csv` without including the DataFrame index. The DataFrame is also printed to the console for immediate review.
 
